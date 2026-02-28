@@ -22,7 +22,7 @@ serve(async (req) => {
 
     // Parse JWT to get user_id
     const token = authHeader?.replace("Bearer ", "");
-    const { data: { user }, error: authError } = await createClient(supabaseUrl, Deno.env.get("SUPABASE_PUBLISHABLE_KEY")!, {
+    const { data: { user }, error: authError } = await createClient(supabaseUrl, Deno.env.get("SUPABASE_ANON_KEY")!, {
       global: { headers: { Authorization: `Bearer ${token}` } }
     }).auth.getUser();
     
